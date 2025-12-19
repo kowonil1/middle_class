@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- saved from url=(0279)https://121.166.148.217/warning.html?user=%EC%99%B8%EB%B6%80%EB%A7%9D%EC%82%AC%EC%9A%A9%EC%9E%90&addr=172.20.113.78&pno=36&cate=%EC%B0%A8%EB%8B%A8%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%28%EC%82%AC%EC%9A%A9%EC%9E%90%29&pname=%EC%A0%84%EC%82%AC%20%EA%B8%B0%EB%B3%B8%EC%A0%95%EC%B1%85 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Warning!</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="author" content="c">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="./bootstrap.min.css">
+<link rel="stylesheet" href="./jquery-ui.min.css">
+<link rel="stylesheet" href="./main.css">
+<script src="./jquery.min.js.다운로드" type="text/javascript" charset="UTF-8"></script>
+<script src="./jquery-ui.min.js.다운로드" type="text/javascript" charset="UTF-8"></script>
+<script src="./multi_lang.js.다운로드" type="text/javascript" charset="UTF-8"></script>
+<script>
+$(document).on("contextmenu selectstart dragstart", function(){return false;}).on("keydown", function(e){if(e.ctrlKey && (e.keyCode||e.which) == 85){return false;}});
+$("img").on("contextmenu selectstart dragstart", function(){return false;});
+</script>
+</head>
+
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" lang="ko">
+	<div id="temp01" class="">
+		<div class="contain">
+			<div class="content">
+				<div class="content_inner">
+					<div class="logobox"><img class="logo" src="./custom_logo01.png"></div>
+					<div class="img"></div>
+					<div class="rightbox">
+						<h2 class="title">비업무용 사이트 접속 차단 알림</h2>
+						<h3 class="stitle">이메일 첨부파일 다운로드가 차단된 경우에는<br>security@kaeri.re.kr 로 링크를 전달해 주시거나, <br>아래 다운로드 서비스를 통해 직접 다운로드 바랍니다.</h3>
+<div>
+  <a href="https://download.kaeri.re.kr/" target="_blank" style="color:blue; text-decoration:underline; cursor:pointer;">
+    다운로드 서비스로 이동
+  </a>
+</div>
+						<div class="data">
+							<dl>
+								<dt class="data_title">사용자</dt>
+								<dd class="data_info" id="user">외부망사용자, 172.20.113.78</dd>
+								<dt class="data_title">카테고리</dt>
+								<dd class="data_info" id="cate">차단카테고리(사용자)</dd>
+								<dt class="data_title">정책</dt>
+								<dd class="data_info" id="rule">36. 전사 기본정책</dd>
+								<dt class="data_title" style="display: none;">서버 IP</dt>
+								<dd class="data_info hid" id="svr_ip" style="display: none;">--</dd>
+								<dt class="data_title" style="display: none;">URL </dt>
+								<dd class="data_info hid" id="url" style="display: none;">--</dd>
+							</dl>
+						</div>
+						<h4 class="sinfo">▶담당자 : 사이버보안팀 임수민(T.866-6162)</h4>
+					</div>
+					<div class="btnbox"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="oDialog" class="dialog">
+		<table class="table table-sm">
+		<tbody>
+		<tr><td><textarea id="reason" class="high" ara-max="1000" tabindex="10" placeholder=""></textarea></td></tr>
+		</tbody>
+		</table>
+	</div>
+
+	<div id="oCover" class="cover"></div>
+
+
+<script>
+//===================================================================================================
+// Text (KO/EN)
+//===================================================================================================
+var lang = "en";
+try{lang = (navigator.languages ? navigator.languages[0] : navigator.language||navigator.userLanguage).substring(0,2);} catch(e){lang = "en";}
+$("body").attr("lang", lang);
+
+//===================================================================================================
+// Set Data Tile
+//===================================================================================================
+$(".data_title").eq(0).html( oLang.text("user") )
+	.next().next().html( oLang.text("category") )
+	.next().next().html( oLang.text("policy") )
+	.next().next().html( oLang.text("server") +" IP" ).hide()
+	.next().next().hide();
+$(".title").html( oLang.text("m_title") );
+$(".stitle").html( oLang.text("m_subtitle1") );
+$(".sinfo").html( '▶ '+ oLang.text("m_subtitle2") );
+
+//===================================================================================================
+// Get Parameters
+//===================================================================================================
+var arrUrl = [], sParam, sTmpParam = (location.search!='') ? location.search.substring(1) : '';
+var sTid = '1', sUser, sAddr, sCate, sRuleNo, sRuleName, sUserView, sCateView, sRuleView, sBranchID = '1', sServerIP, sURL, nPos;
+
+if( sTmpParam ){
+	nPos = sTmpParam.indexOf("&url=");
+	sParam = nPos < 0 ? decodeURIComponent(sTmpParam) : decodeURIComponent(sTmpParam.substring(0, nPos));
+	try{ sURL = nPos > 0 ? decodeURIComponent(sTmpParam.substring(nPos+5)) : ''; } catch(e){ sURL = sTmpParam.substring(nPos+5); }
+
+	sTid = sParam.match(/tid=.+/) ? sParam.replace(/^(?:.*?)tid=([^&]*)(?:.*)?/, "$1") : '1';
+	sUser = sParam.match(/user=.+/) ? sParam.replace(/^(?:.*?)user=([^&]*)(?:.*)?/, "$1") : '';
+	sAddr = sParam.match(/addr=.+/) ? sParam.replace(/^(?:.*?)addr=([^&]*)(?:.*)?/, "$1") : '';
+	sCate = sParam.match(/cate=.+/) ? sParam.replace(/^(?:.*?)cate=([^&]*)(?:.*)?/, "$1") : '';
+	sRuleNo = sParam.match(/pno=.+/) ? sParam.replace(/^(?:.*?)pno=([^&]*)(?:.*)?/, "$1") : '';
+	sRuleName = sParam.match(/pname=.+/) ? sParam.replace(/^(?:.*?)pname=([^&]*)(?:.*)?/, "$1") : '';
+	sBranchID = sParam.match(/bid=.+/) ? sParam.replace(/^(?:.*?)bid=([^&]*)(?:.*)?/, "$1") : '1';
+	sServerIP = sParam.match(/svr_ip=.+/) ? sParam.replace(/^(?:.*?)svr_ip=([^&]*)(?:.*)?/, "$1") : '';
+
+	sUserView = (sUser!=''&&sAddr!='') ? sUser + ", " + sAddr : (sUser||sAddr ? (sUser||sAddr) : '');
+	sCateView = sCate;
+	sRuleView = (sRuleName!=''&&sRuleNo!='') ? sRuleNo + ". " + sRuleName : (sRuleName||sRuleNo ? (sRuleName||sRuleNo) : '');
+
+	if( sUserView ) $("#user").html( sUserView );
+	if( sCateView ) $("#cate").html( sCateView );
+	if( sRuleView ) $("#rule").html( sRuleView );
+	if( sServerIP )	$("#svr_ip").show().html( sServerIP ).prev().show();
+	else			$("#svr_ip").hide().prev().hide();
+	if( sURL )		$("#url").show().html( sURL ).attr("title", sURL).prev().show();
+	else			$("#url").hide().prev().hide();
+}
+
+//===================================================================================================
+// tsTemplate
+//===================================================================================================
+var tsTemplate = {
+	select: function(tid, ruleNo, bid){
+				var $oDiv = $("#temp01"), oData, oInfo, $oBg;
+
+				$.ajax({
+					url:	"/cgi/ajax_common.php",
+					type:	"post",
+					data:	{
+						mode:		"policy_template_select",
+						tid: 		tid,
+						rule_no: 	ruleNo,
+						bid:		bid
+					},
+					dataType: "json",
+					success: function(rdata){
+						if( rdata && rdata.info ){
+							oData = rdata;
+							oInfo = oData.info;
+							sTid = oInfo['tid'];
+
+							if( oInfo['ui_cfg_val'] == '1' && sUser != '' && sRuleNo && sCate != '' && sServerIP != '' ){
+								$(".btnbox").html( "<button class='btn' onclick='tsBlock.open();'>▶ "+ oLang.text("m_request_btn") +"</button>" );
+							}
+
+							if( oInfo['tid_check'] ){
+								var title = oInfo['title'];
+								var templateEnable = oInfo['template_enable'];
+								var subtitle1 = oInfo['subtitle1'];
+								var subtitle2 = oInfo['subtitle2'];
+								var subtitle3 = oInfo['subtitle3'];
+								var subtitle1 = subtitle1.replace(/(&lt;br&gt;|&lt;br\/&gt;)/g,"<br>");
+								var subtitle2 = subtitle2.replace(/(&lt;br&gt;|&lt;br\/&gt;)/g,"<br>");
+
+								$(".title").html( title );
+								$(".stitle").html( subtitle1 );
+								if( templateEnable == '0' ) $(".data").hide();
+								$(".sinfo").html( '▶'+ subtitle2 );
+
+								if( subtitle3 ){
+									var $oTitle = $(".data_title"),
+										arrKey = ["cate", "policy", "ship", "url"],
+										arrTmp = [], nIdx, sKey, sVal, bUserCheck = true, bChipCheck = true;
+
+									subtitle3.split(',').forEach(function(cfg){
+										arrTmp = cfg.split(':'), nIdx = 0, sKey = '', sVal = '';
+
+										if( arrTmp.length != 2 ) return true;
+										else {
+											sKey = arrTmp[0];
+											sVal = arrTmp[1];
+										}
+
+										if( sVal != '0' ) return true;
+										else {
+											switch( sKey ){
+												case "user":	bUserCheck = false; break;
+												case "chip":	bChipCheck = false; break;
+												default:		nIdx = arrKey.indexOf(sKey) + 1;
+																$oTitle.eq(nIdx).hide().next().hide();
+																break;
+											}
+										}
+									});
+
+									if( !bUserCheck && !bChipCheck ) $oTitle.eq(0).hide().next().hide();
+									else if( !bUserCheck ) $("#user").html( sAddr );
+									else if( !bChipCheck ) $("#user").html( sUser );
+								}
+							}
+						}
+					},
+					error: function(xhr, status, error){},
+					complete: function(){
+						$oBg = sTid%4 < 2 ? $oDiv : $(".img");		// 1=5, 2=3=4
+						if( sTid > 1 ) $oDiv.attr("id", "temp0"+ sTid);
+						if( oData && oData.bg_path && oData.bg_path.indexOf("custom") > 0 ) $oBg.css("background-image", "url("+ oData.bg_path +')');
+						$(".logo").get(0).src = oData && oData.logo_path ? oData.logo_path : "/common/template/images/logo0"+ sTid +".png";
+						$oDiv.removeClass();
+					}
+				});
+			}
+};
+
+//===================================================================================================
+// Get Template Select
+//===================================================================================================
+tsTemplate.select(sTid, sRuleNo, sBranchID);
+
+//===================================================================================================
+// Permission request
+//===================================================================================================
+var tsBlock = {
+	open:	function(sTitle){
+				$("#oDialog").dialog({
+					resizable: false,
+					title: oLang.text("m_request_btn"),
+					width: "600px",
+					buttons:{
+						"OK":function(){
+							tsBlock.act();
+						},
+						"Close":function(){
+							$(this).dialog("close");
+						}
+					},
+					open:function(){
+						$("#reason")[0].placeholder = oLang.text("reason");
+					}
+				});
+			},
+
+	act: 	function(){
+				var sReason = $("#reason").val().trim().replace(/(\n(\s*)?)+/mg, '\n');
+
+				if( sReason.length > 1000 ){
+					oLang.alert("max_letter", 1000);
+					return;
+				}
+
+				if( sReason != '' ){
+					if( confirm(oLang.text("m_unblock_request")) ){
+						$.ajax({
+							url:	"/cgi/ajax_policy_allowed.php",
+							type:	"post",
+							data:	{
+								mode: 		"policy_allowed_request",
+								bid:		sBranchID,
+								tid:		sTid,
+								uid:		encodeURIComponent(sUser),
+								uip:		sAddr,
+								pno:		sRuleNo,
+								pname:		encodeURIComponent(sRuleName),
+								cate:		encodeURIComponent(sCate),
+								svr_ip:		sServerIP,
+								url:		encodeURIComponent(sURL),
+								reason:		encodeURIComponent(sReason)
+							},
+							dataType:	"json",
+							success: function(rdata){
+								if( rdata && rdata.result > 0 ){
+									alert( oLang.text("m_request_ok") );
+								} else {
+									alert( oLang.text("m_request_failed") );
+								}
+							},
+							complete: function(){
+								$("#oDialog").dialog("close");
+								$(".btnbox").remove();
+							}
+						});
+					}
+				}
+				else {
+					oLang.alert("enter", oLang.text("reason"));
+					$("#reason").val('').focus();
+				}
+			}
+};
+
+//=====================================================================================================================
+// Dialog Open
+//=====================================================================================================================
+$("#oDialog").on("dialogopen", function(e){
+	var $obj = $(this), $oDiv = $obj.parent(), $oInput = $obj.find("input:focus, textarea:focus");
+	var $oCover = $("#oCover");
+	var nCoverHeight = parseInt($oCover.css("height")), nDialogHeight = parseInt($oDiv.css("height")), nTop;
+	var nCoverWidth = parseInt($oCover.css("width")), nDialogWidth = parseInt($oDiv.css("width")), nLeft;
+
+	nTop = ( nDialogHeight < nCoverHeight ) ? (nCoverHeight - nDialogHeight)/2 + "px" : "10px";
+	nLeft = ( nDialogWidth < nCoverWidth ) ? (nCoverWidth - nDialogWidth)/2 + "px" : "10px";
+
+	$("body").css("overflow", "hidden");
+	$oCover.fadeIn("fast");
+	$oDiv.css({"top":nTop, "left":nLeft}).appendTo( $oCover );
+	if( $oInput.length > 0 ) setTimeout(function(){$oInput.focus();});
+
+	$(window).off("resize").on("resize", function(){
+		nCoverHeight = parseInt($oCover.css("height"));
+		nCoverWidth = parseInt($oCover.css("width"));
+		nDialogHeight = parseInt($oDiv.css("height"));
+		nDialogWidth = parseInt($oDiv.css("width"));
+
+		nTop = ( nDialogHeight < nCoverHeight ) ? (nCoverHeight - nDialogHeight)/2 + "px" : "10px";
+		nLeft = ( nDialogWidth < nCoverWidth ) ? (nCoverWidth - nDialogWidth)/2 + "px" : "10px";
+		$oDiv.css({"top":nTop, "left":nLeft});
+	});
+});
+
+//=====================================================================================================================
+// Dialog Close
+//=====================================================================================================================
+$(".dialog").on("dialogclose", function(e){
+	var $oCover = $("#oCover");
+	$oCover.empty().hide();
+	if( !$oCover.is(":visible") ) $("body").css("overflow", "auto");
+});
+</script>
+
+</body></html>

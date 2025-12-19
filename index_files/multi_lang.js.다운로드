@@ -1,0 +1,389 @@
+//===================================================================================================
+// Multi-Languages
+//===================================================================================================
+var oLang = {
+	redirect:	{	en:	"The SSL certificate was not found in your browser.<br>"+
+						"Please install the SSL certificate and try to connect again.<br>"+
+						"If the problem persists, please contact your network manager.",
+					ko: "당신의 브라우저에는 인증서가 설치되지 않았습니다.<br>"+
+						"아래에서 SSL 인증서를 설치한 후에 다시 <span></span> 로 접속하려면 클릭하세요.<br>"+
+						"인증서 설치 후에도 이 페이지가 반복해서 보여진다면 관리자에게 문의하시기 바랍니다.",
+					ja:	"あなたのブラウザは、証明書がインストールされていません。<br>"+
+						"下からSSL証明書をインストールした後、再度<span></span>に接続するには、クリックしてください。<br>"+
+						"証明書のインストール後に、このページが繰り返し表示さジンダミョン管理者にお問い合わせください。",
+					zh: "您的浏览器没有安装证书。"+
+						"在下方链接下载安装SSL证书后，点击访问 <span> </ span>。"+
+						"如果您在安装证书后重复看到此页面，请与管理员联系。"
+				},
+	title1:		{	en:	"To download SSL certificate installer, please click the link below.",
+					ko: "SSL 인증서 설치 프로그램을 아래 링크에서 다운로드 하세요.",
+					ja:	"SSL証明書インストーラをダウンロードするには、下のリンクをクリックしてください。",
+					zh: "请通过下方链接下载SSL证书安装程序。"
+				},
+	windows:	{	en:	"<li>Download Windows Installer.</li>"+
+						"<li>If you see an alert or warning message during installation process, just continue with the installation.<br/>"+
+						"Then the certificate is installed automatically when Windows Installer starts running.</li>"+
+						"<li>Please restart your browser after you install the SSL certificate.</li>"+
+						"<li class='list-no-style'><strong>NOTE:</strong> Ask your network manager if your network manager provides a separate installation program.</li>",
+					ko: "<li>Windows Installer 를 다운로드 합니다.</li>"+
+						"<li>다운로드 받은 Installer 를 실행했을 때, PC 보호와 같은 실행을 확인하는 경고 창이나 추가적인 진행을 위한 확인창이 뜰 수 있습니다. 그럴 경우, 프로그램이 실행되는 것을 허가할 필요가 있습니다.<br/>"+
+						"실행 환경에 따라 <strong>[실행]</strong> 버튼이 보이는 경우와, <strong>[추가 정보]</strong>를 선택해야 보이는 경우가 있을 수 있습니다.</li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>"+
+						"<li class='list-no-style'><strong>[참고]</strong>만일 관리자가 개별적인 설치 프로그램을 제공하는 경우에는 관리자에게 문의하시기 바랍니다.</li>",
+					ja:	"<li>Windows Installerをダウンロードします。</li>"+
+						"<li>ダウンロードしたInstallerを実行したとき、PCの保護などの実行を確認する警告ウィンドウまたは追加の進行のための確認ウィンドウが表示されます。その場合には、プログラムが実行されることを許可する必要があります。<br/>"+
+						"実行環境に応じて、<strong>「実行」</strong>ボタンが見えたり、<strong>「詳細」</strong>を選択する必要が見られる場合があります。</li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>"+
+						"<li class='list-no-style'><strong>[参考]</strong>万一管理者が個々のインストールプログラムを提供する場合には、管理者にお問い合わせください。</li>",
+					zh: "<li>下载Windows Installer。</li>"+
+						"<li>在运行下载的安装程序时，可能会弹出PC安保相关的警告窗。如果出现该情况，请需要允许运行相关程序。<br/>"+
+						"根据操作环境的不同，您可能会看到<strong>“运行”</strong>按钮，或者需要选择 <strong>“其他信息”</strong>的情况。</li>"+
+						"<li>在证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"+
+						"<li class='list-no-style'><strong>[注意]</strong>如果您的管理员提供单独的安装程序，请与您的管理员联系。</li>"
+				},
+	macos:		{	en:	"<li>Download SSL certificate. The certificate has the .crt file name extension.</li>"+
+						"<li>When you run the certificate, <strong>the Keychain is excuted.</strong></li>"+
+						"<li>When prompted for a password, enter it.</li>"+
+						"<li>SSL certificate is installed in <strong>Keychain.</strong></li>"+
+						"<li>Double-click the SSL certificate installed in your <strong>Keychain</strong> and it will open a details pane. Select <strong>[Always Trust]</strong> among Trust entries.</li>"+
+						"<li>Please restart your browser after you install the SSL certificate.</li>",
+					ko: "<li>SSL 인증서를 다운로드합니다. SSL 인증서 파일 확장자는 <strong>.crt</strong>입니다.</li>"+
+						"<li>인증서를 실행하면 <strong>키체인</strong>이 실행되고 관리자 암호를 요구하면 <strong>암호</strong>를 입력합니다.</li>"+
+						"<li><strong>키체인</strong>에 SSL 인증서가 설치됩니다.</li>"+
+						"<li><strong>키체인</strong>에 설치된 SSL 인증서를 더블 클릭하여 상세 정보 창을 열고 신뢰 항목을 선택하여 <strong>[항상 신뢰]</strong>로 변경합니다.</li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>",
+					ja:	"<li>SSL証明書をダウンロードします。SSL証明書ファイルの拡張子は、<strong>.crt</strong>です。</li>"+
+						"<li>証明書を実行すると、<strong>キーチェーン</strong>が実行されて、管理者パスワードを要求する<strong>パスワード</strong>を入力します。</li>"+
+						"<li><strong>キーチェーン</strong>にSSL証明書がインストールされます。</li>"+
+						"<li><strong>キーチェーン</strong>にインストールしたSSL証明書をダブルクリックして、詳細情報ウィンドウを開き、信頼の項目を選択して<strong>「常に信頼」</strong>に変更します。</li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>",
+					zh: "<li>下载SSL证书。 SSL证书文件扩展名为<strong>.crt</strong>。</li>"+
+						"<li>运行证书时，<strong>钥匙串</strong>将启动，系统会要求输入管理员密码后SSL证书将安装在钥匙串上。</li>"+
+						"<li>双击<strong>钥匙串</strong>中安装的SSL证书以打开详细信息窗口，然后选择信任项以将其更改为<strong>“始终信任”</strong>。</li>"+
+						"<li>证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"
+				},
+	android:	{	en:	"<li>Download SSL certificate. The certificate has the .crt file name extension.</li>"+
+						"<li>Select Settings > Security & Privacy > Other security settings > Install certificate stored on device > CA certificate > Continue installation.</li>"+
+						"<li>Verify your identity.</li>"+
+						"<li>After selecting the saved certificate, select <strong>Done</strong>.</li>"+
+						"<li>Please restart your browser after you install the SSL certificate.</li>",
+					ko: "<li>SSL 인증서를 다운로드합니다. SSL 인증서 파일 확장자는 <strong>.crt</strong>입니다.</li>"+
+						"<li><strong>[설정 > 보안 및 개인정보 보호 > 기타 보안 설정 > 기기에 저장된 인증서 설치 > CA 인증서 > 계속 설치]</strong>를 선택합니다.</li>"+
+						"<li><strong>[본인 인증]</strong>을 합니다.</li>"+
+						"<li>저장된 인증서 선택 후 <strong>[완료]</strong>를 선택합니다.</li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>",
+					ja:	"<li>SSL証明書をダウンロードします。SSL証明書ファイルの拡張子は、<strong>.crt</strong>です。</li>"+
+						"<li>設定>セキュリティとプライバシー>その他のセキュリティ設定>デバイスに保存されている証明書のインストール> CA証明書>続行インストールを選択します。</li>"+
+						"<li><strong>本人認証</strong>を行います。</li>"+
+						"<li>保存した証明書を選択したら、<strong>完了</strong>を選択します。</li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>",
+					zh: "<li>下载SSL证书。 SSL证书文件扩展名为<strong>.crt</strong>。</li>"+
+						"<li>选择设置 > 安全和隐私 > 其他安全设置 > 安装设备上存储的证书 > CA 证书 > 继续安装。</li>"+
+						"<li>验证您的身份。</li>"+
+						"<li>选择已保存的证书，然后选择<strong>完成</strong>。</li>"+
+						"<li>证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"
+				},
+	ios:		{	en:	"<li>In <strong>Safari</strong>, select <strong>SSL certificate link</strong>.</li>"+
+						"<li>Run <strong>Install Profile</strong>.</li>"+
+						"<li>Select <strong>Install</strong> to continue.</li>"+
+						"<li>Enter your password if required.</li>"+
+						"<li>If installation does not proceed automatically, select the downloaded certificate in <strong>[Settings > General > VPN and Device Management]</strong>, authenticate, and then install it.</li>"+
+						"<li>Please restart your browser after you install the SSL certificate.</li>"+
+						"<li class='list-billiard'>For <strong>iOS 10.3 or later</strong>, the following additional settings are required for manually installed certificates.<ol>"+
+						"<li>Go to <strong>Settings</strong> > <strong>General</strong> > <strong>About</strong> > <strong>Certificate Trust Settings</strong>.</li>"+
+						"<li>Under <strong>\"Enable full trust for root certificates\"</strong>, turn on trust for the certificate.</li></ol></li>",
+					ko: "<li><strong>Safari</strong>에서 <strong>SSL 인증서 링크</strong>를 선택합니다.</li>"+
+						"<li>iOS에서 <strong>프로파일 설치</strong>가 실행됩니다.</li>"+
+						"<li><strong>설치</strong>를 선택하여 계속 진행하면 설치가 완료됩니다.</li>"+
+						"<li>환경에 따라 암호를 요구할 경우, <strong>암호</strong>를 입력합니다.</li>"+
+						"<li>설치가 자동으로 진행 안될 경우 <strong>[설정 > 일반 > VPN 및 기기 관리]</strong> 에서 다운로드한 인증서를 선택하여 인증 후 설치해주세요.</li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>"+
+						"<li class='list-billiard'><strong>iOS 10.3 버전 이상</strong>인 경우 수동 설치된 인증서에 대해 아래와 같은 추가 설정이 필요합니다.<ol>"+
+						"<li><strong>설정</strong> > <strong>일반</strong> > <strong>정보</strong> > <strong>인증서 신뢰 설정</strong>으로 이동합니다.</li>"+
+						"<li><strong>\"루트 인증서 전체 신뢰 활성화\"</strong> 아래에서 해당 인증서에 대한 신뢰를 켭니다.</li></ol></li>",
+					ja:	"<li><strong>Safari</strong>で<strong>SSL証明書のリンク</strong>を選択します。</li>"+
+						"<li>iOSで<strong>プロファイルのインストール</strong>が実行されます。</li>"+
+						"<li><strong>インストール</strong>を選択して続行すると、インストールが完了します。</li>"+
+						"<li>環境に応じて、パスワードを要求する場合は、<strong>パスワード</strong>を入力します。</li>"+
+						"<li>インストールが自動的に進行しない場合は、<strong>[設定>一般> VPNとデバイス管理]</strong>でダウンロードした証明書を選択して認証後にインストールしてください。</li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>"+
+						"<li class='list-billiard'><strong>iOS10.3以降</strong>の場合は、手動インストールされた証明書について、以下の追加設定が必要です。<ol>"+
+						"<li><strong>設定</strong> > <strong>一般</strong> > <strong>情報</strong> > <strong>証明書の信頼設定</strong>に移動します。</li>"+
+						"<li><strong>\"ルート証明書、完全な信頼の有効化\"</strong>の下で、その証明書の信頼を有効にします。</li></ol></li>",
+					zh: "<li>在<strong> Safari </strong>中，选择<strong> SSL证书链接</strong>。</li>"+
+						"<li>iOS将进行安装。</li>"+
+						"<li>选择安装以继续完成安装。</li>"+
+						"<li>根据环境可能会一要求<strong>密码</strong>，请输入密码完成安装。</li>"+
+						"<li>如果安装没有自动进行，请在<strong>[设置 > 常规 > VPN 和设备管理]</strong> 中选择下载的证书，进行身份验证，然后安装。</li>"+
+						"<li>证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"+
+						"<li class='list-billiard'><strong>iOS 10.3以上版本</strong> ，对于手动安装的证书需要追加进行以下设置：移动到<ol>"+
+						"<li><strong>设置</strong> > <strong>通用</strong> > <strong>关于本机</strong> > <strong>证书信任</strong>。</li>"+
+						"<li>通过启动<strong>“根证书信任”</strong>完成该证书信任设置。</li></ol></li>"
+				},
+	firefox:	{	en:	"<li>How to Install with SSL Certificate File<ol>"+
+						"	<li>Go to <strong>[Menu > Option > Advanced > Certificate > View Certificates > Authorities]</strong>.</li>"+
+						"	<li>Click <strong[Import]</strong> and select [SSL Certificate file].</li>"+
+						"	<li>Select all three options below for <strong>websites, email users and software developers</strong> when you are asked to trust a new CA.</li>"+
+						"	<li>Click <strong>[OK]</strong>.</li></ol></li>"+
+						"<li>How to Install with SSL Certificate Link<ol>"+
+						"	<li>Click the SSL certificate link in Firefox.</li>"+
+						"	<li>Select all three options below for <strong>websites, email users and software developers</strong> when you are asked to trust a new CA.</li>"+
+						"	<li>Click <strong>[OK]</strong>.</li></ol></li>"+
+						"<li>Please restart your browser after installing the SSL certificate.</li>",
+					ko: "<li>SSL 인증서 파일로 설치하기<ol>"+
+						"	<li><strong>[메뉴 > 옵션 > 고급 설정 > 인증서 > 인증서 보기 > 인증 기관]</strong>을 선택합니다.</li>"+
+						"	<li><strong>[불러오기]</strong>를 누르고 [SSL 인증서 파일]을 선택합니다.</li>"+
+						"	<li>신뢰할 항목으로 <strong>웹 사이트, 메일 사용자, 소프트웨어 개발사</strong> 3가지 항목 모두를 선택합니다.</li>"+
+						"	<li><strong>[확인]</strong>을 누릅니다.</li></ol></li>"+
+						"<li>SSL 인증서 링크로 설치하기<ol>"+
+						"	<li>Firefox에서 SSL 인증서 링크를 클릭합니다.</li>"+
+						"	<li>신뢰할 항목으로 <strong>웹 사이트, 메일 사용자, 소프트웨어 개발사</strong> 3가지 항목 모두를 선택합니다.</li>"+
+						"	<li><strong>[확인]</strong>을 누릅니다.</li></ol></li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>",
+					ja:	"<li>SSL証明書ファイルのインストール<ol>"+
+						"	<li><strong>「メニュー>オプション>詳細設定>証明書>証明書の表示>認証機関」</strong>を選択します。</li>"+
+						"	<li><strong>「インポート」</strong>をクリックして「SSL証明書ファイル」を選択します。</li>"+
+						"	<li>信頼項目に<strong>ウェブサイト、メールユーザー、ソフトウェア開発会社</strong>の3つの項目すべてを選択します。</li>"+
+						"	<li><strong>「確認」</strong>を押します。</li></ol></li>"+
+						"<li>SSL証明書のリンクに設置する<ol>"+
+						"	<li>FirefoxでSSL証明書のリンクをクリックします。</li>"+
+						"	<li>信頼項目に<strong>ウェブサイト、メールユーザー、ソフトウェア開発会社</strong>の3つの項目すべてを選択します。</li>"+
+						"	<li><strong>「確認」</strong>を押します。</li></ol></li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>",
+					zh: "<li>使用SSL证书文件进行安装<ol>"+
+						"	<li>选择<strong>“菜单>选项>高级设置>证书>查看证书>证书颁发机构”</strong>。</li>"+
+						"	<li>单击<strong>“导入”</strong>，然后选择“SSL证书文件”。</li>"+
+						"	<li>选择要信任的所有三个项目：<strong>网站，邮件用户，软件开发商</strong>。</li>"+
+						"	<li>按<strong>“确定”</strong>。</li></ol></li>"+
+						"<li>使用SSL证书链接进行安装<ol>"+
+						"	<li>在Firefox中，单击SSL证书链接。</li>"+
+						"	<li>选择要信任的所有三个项目：<strong>网站，邮件用户，软件开发商</strong>。</li>"+
+						"	<li>按<strong>“确定”</strong>。</li></ol></li>"+
+						"<li>证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"
+				},
+	title2:		{	en:	"You can install SSL certificate directly from the link below.",
+					ko: "아래 링크에서 SSL 인증서를 직접 설치할 수 있습니다.",
+					ja:	"下のリンクからSSL証明書を直接インストールすることができます。",
+					zh: "您可以直接通过以下链接安装SSL证书。"
+				},
+	custom:		{	en:	"<li>Download SSL certificate. The certificate has the .crt file name extension.</li>"+
+						"<li>Your OS will run the installation wizard or program if you run SSL certificate.<ul><li>For Windows:<ol>"+
+						"	<li>Select <strong>[Install certificate]</strong>.</li>"+
+						"	<li>Select the certification store location between <strong>[Current User]</strong> or <strong>[Local Machine]</strong></li>"+
+						"	<li>Select <strong>[Place all certificates in the following store]</strong>.</li>"+
+						"	<li>Click <strong>[Browse...]</strong> and then select the certificate store as <strong>[Trusted Root Certification Authorities]</strong>.</li>"+
+						"	<li>Click <strong>[Next]</strong> to finish the certificate installation.</li></ol></li><li>For Mac OS X:<ol>"+
+						"	<li>When you run the certificate, <strong>the Keychain is excuted.</strong></li>"+
+						"	<li>When prompted for a password, enter it.</li>"+
+						"	<li>SSL certificate is installed in <strong>Keychain.</strong></li>"+
+						"	<li>Double-click the SSL certificate installed in your <strong>Keychain</strong> and it will open a details pane. Select <strong>[Always Trust]</strong> among Trust entries.</li></ol></li></ul></li>"+
+						"<li>Please restart your browser after you install the SSL certificate.</li>",
+					ko: "<li>SSL 인증서를 다운로드합니다. SSL 인증서 파일 확장자는 <strong>\".crt\"</strong>입니다.</li>"+
+						"<li>SSL 인증서를 실행하면 OS 에 따라 설치 프로그램이 실행되게 됩니다.<ul><li>Windows:<ol>"+
+						"	<li><strong>\"인증서 설치\"</strong>를 선택합니다.</li>"+
+						"	<li>저장소 위치를 <strong>\"현재 사용자\"</strong> 와 <strong>\"로컬 컴퓨터\"</strong> 중에 원하는 것을 선택합니다.</li>"+
+						"	<li><strong>\"모든 인증서를 다음 저장소에 저장\"</strong>을 선택합니다.<br/> \"찾아보기\"로 <strong>\"신뢰할 수 있는 루트 인증 기관\"</strong> 을 선택합니다.</li>"+
+						"	<li><strong>\"다음\"</strong>으로 진행하면 인증서 설치를 마칩니다.</li></ol></li><li>Mac(OS X):<ol>"+
+						"	<li>인증서를 실행하면 <strong>키체인</strong>이 실행되고 관리자 암호를 요구하면 <strong>암호</strong>를 입력합니다.</li>"+
+						"	<li><strong>키체인</strong>에 SSL 인증서가 설치됩니다.</li>"+
+						"	<li><strong>키체인</strong>에 설치된 SSL 인증서를 더블 클릭하여 상세 정보 창을 열고 신뢰 항목을 선택하여 <strong>\"항상 신뢰\"</strong>로 변경합니다.</li></ol></li><li>Linux(Ubuntu, Debian):<ol>"+
+						"	<li>인증서를 다음 경로에 복사 <strong>/usr/local/share/ca-certificates/</strong></li>"+
+						"	<li>인증서 업데이트 <strong>update-ca-certificates</strong></li></ol></li><li>Linux(CentOS):<ol>"+
+						"	<li>패키지 설치 <strong>yum install ca-certificates</strong> (패키지가 없는 경우)</li>"+
+						"	<li>패키지 활성화 <strong>update-ca-trust force-enable</strong></li>"+
+						"	<li>인증서를 다음 경로에 복사 <strong>/etc/pki/ca-trust/source/anchors/</strong></li>"+
+						"	<li>인증서 업데이트 <strong>update-ca-trust extract</strong></li></ol></li></ul></li>"+
+						"<li>인증서 설치가 완료되면 브라우저 창을 모두 닫은 후 재시작합니다.</li>",
+					ja:	"<li>SSL証明書をダウンロードします。 SSL証明書ファイルの拡張子は、<strong>.crt </strong>です。</li>"+
+						"<li>SSL証明書を実行すると、OSによってインストールプログラムが実行されるようになります。<ul><li>Windows:<ol>"+
+						"	<li><strong>「証明書のインストール」</strong>を選択します。</li>"+
+						"	<li>ストアの場所を<strong>「現在のユーザー」</strong>と<strong>「ローカルコンピュータ」</strong>の中たいものを選択します。</li>"+
+						"	<li><strong>「すべての証明書を次のストアに保存」</strong>を選択します。</li>"+
+						"	<li><strong>「参照」</strong>で<strong>「信頼されたルート証明機関」</strong>を選択します。</li>"+
+						"	<li><strong>「次」</strong>に進行すると、証明書のインストールを終了します。</li></ol></li><li>Mac OS X:<ol>"+
+						"	<li>証明書を実行すると、<strong>キーチェーン</strong>が実行されて、管理者パスワードを要求する<strong>パスワード</strong>を入力します。</li>"+
+						"	<li><strong>キーチェーン</strong>にSSL証明書がインストールされます。</li>"+
+						"	<li><strong>キーチェーン</strong>にインストールしたSSL証明書をダブルクリックして、詳細情報ウィンドウを開き、信頼の項目を選択して<strong>「常に信頼」</strong>に変更します。</li></ol></li></ul></li>"+
+						"<li>証明書のインストールが完了したら、ブラウザウィンドウを閉じた後に再起動します。</li>",
+					zh: "<li>下载SSL证书。 SSL证书文件扩展名为<strong>.crt</strong>。</li>"+
+						"<li>运行SSL证书时，安装程​​序将根据您的操作系统运行。<ul><li>Windows:<ol>"+
+						"	<li>选择<strong>“安装证书”</strong>。</li>"+
+						"	<li>在<strong>“当前用户”</strong>和<strong>“本地计算机”</strong>中选择保存路径。</li>"+
+						"	<li>选择<strong>“将所有证书存储在以下商店中”</strong>。<br/> 使用“浏览”选择<strong>“受信任的根证书颁发机构”</strong>。</li>"+
+						"	<li>继续<strong>“下一步”</strong>以完成证书的安装。</li></ol></li><li>Mac(OS X):<ol>"+
+						"	<li>运行证书时，<strong>钥匙串</strong>将启动，如果系统提示输入管理员密码，请输入<strong>密码</strong>。</li>"+
+						"	<li><strong>钥匙串</strong>上将安装SSL证书。</li>"+
+						"	<li>双击<strong>钥匙串</strong>中安装的SSL证书以打开详细信息窗口，然后选择信任项以将其更改为<strong> “始终信任”</strong>。</li></ol></li></ul></li>"+
+						"<li>证书安装完成后，关闭所有浏览器窗口并重新启动。</li>"
+				},
+
+	user:			{en:	"User",						ko: "사용자",					ja: "ユーザ",					zh: "用户"},
+	category:		{en:	"Category",					ko: "카테고리",					ja: "カテゴリー",				zh: "类别"},
+	policy:			{en:	"Policy",					ko: "정책",						ja: "ポリシー",					zh: "政策"},
+	server:			{en:	"Server",					ko: "서버",						ja: "サーバー",					zh: "服务器"},
+	uid:			{en:	"ID",						ko: "아이디",					ja: "ユーザ名",					zh: "用户名"},
+	password:		{en:	"Password",					ko: "비밀번호",					ja: "パスワード",				zh: "密码"},
+	password_re:	{en:	"Confirm Password",			ko: "비밀번호 확인",			ja: "パスワードの確認",			zh: "确认密码"},
+	password_ori:	{en:	"Original Password",		ko: "기존 비밀번호",			ja: "既存のパスワード",			zh: "原始密码"},
+	password_set:	{en: "Password Settings",			ko: "비밀번호 설정",			ja: "パスワードの設定",			zh: '设置密码'},
+	password_reset:	{en: "Password change regularly",	ko: "비밀번호 정기 변경",		ja: "パスワードの定期変更",		zh: '密码定期更改'},
+	password_change:{en: "Change Password",				ko: "비밀번호 변경",			ja: "パスワードの変更",			zh: '更改密码'},
+	current_login:	{en:	"Current login",			ko: "현재 로그인",				ja: "現在ログイン",				zh: "当前登录"},
+	previous_login:	{en:	"Previous login",			ko: "이전 로그인",				ja: "前ログイン",				zh: "以前登录"},
+	save_id:		{en:	"Save ID",					ko: "아이디 저장",				ja: "ID保存 ",					zh: "保存ID"},
+	reason:			{en:	"Reason",					ko: "사유",						ja: "理由 ",					zh: "原因"},
+	enter:			{en: 'Please enter "?".',			ko: '"?"을(를) 입력해주세요.',	ja: '"?"を入力してください。',		zh: '请输入"?"'},
+	pass_reset:		{en:	"Reset password",			ko: "비밀번호 초기화",			ja: "パスワードの初期化 ",			zh: "重设密码"},
+
+	max_count:		{en: 'Up to ?',						ko: '최대 ? 개',				ja: '最大?つの',				zh: '最多?个'},
+	max_value:		{en: 'Up to ?',						ko: '최대 ?',					ja: '最大?',					zh: '最多?'},
+	max_bytes:		{en: 'Up to ? bytes',				ko: '최대 ? 바이트',			ja: '最大?バイト',				zh: '最多?字节'},
+	max_level:		{en: 'Up to ? levels',				ko: '최대 ? 단계',				ja: '最大?段階',				zh: '最多?步骤'},
+	max_letter:		{en: 'Up to ? characters',			ko: '최대 ? 글자',				ja: '最大?文字',				zh: '最多?字'},
+	max_percent:	{en: 'Up to ? %',					ko: '최대 ? %',					ja: '最大?%',					zh: '最多?%'},
+	min_count:		{en: 'At least ?',					ko: '최소 ? 개',				ja: '最小?つの',				zh: '最少?个'},
+	min_bytes:		{en: 'At least ? bytes',			ko: '최소 ? 바이트',			ja: '最小?バイト',				zh: '最少?字节'},
+	min_letter:		{en: 'At least ? characters',		ko: '최소 ? 글자',				ja: '最小?文字',				zh: '最少?字'},
+	min_letters:	{en: '? or more',					ko: '?글자 이상',				ja: '?文字以上',				zh: '最少?字'},
+	min_percent:	{en: 'At least ? %',				ko: '최소 ? %',					ja: '最小?%',					zh: '最少?%'},
+	min_day:		{en: 'At least ? days',				ko: '최소 ? 일',				ja: '最小?日',					zh: '最少?天'},
+	max_user:		{en: 'Up to ? users',				ko: '최대 ? 명',				ja: '最大?名',					zh: '最多?名'},
+
+	guide_password:	{	en: "* Combination of English, special characters, and numbers\n* 9 or more characters\n* Restriction of continuous input of the same 3 characters\n* Limit input of 4 contiguous characters on the keyboard",
+						ko: "* 영문, 특수문자, 숫자 조합\n* 9글자 이상\n* 동일 문자 3개 연속 입력 제한\n* 키보드 인접 4글자 입력 제한",
+						ja: "* 英語、特殊文字、数字の組合せ\n* 9文字以上\n* 同じ3文字連続入力制限\n* キーボードの隣接する4文字入力制限",
+						zh: "* 英文、特殊字符、数字的组合\n* 9 个或更多字符\n* 限制连续输入相同的3个字符\n* 限制在键盘上输入 4 个相邻字符"
+					},
+	guide_pass_id_same: {
+						en: "Password and ID must be different.",
+						ko: "비밀번호와 계정은 달라야합니다.",
+						ja: "パスワードとIDは異なるはずです。",
+						zh: "密码和 ID 必须不同。"
+					},
+	guide_password_same: {
+						en: "The password is the same.",
+						ko: "비밀번호가 동일합니다.",
+						ja: "パスワードが同じです。",
+						zh: "密码一致。"
+					},
+	guide_password_diff: {
+						en: "Password and confirm password do not match.",
+						ko: "비밀번호가 일치하지 않습니다.",
+						ja: "パスワードが一致しません。",
+						zh: "密码不一致。"
+					},
+	guide_pass_capslock: {
+						en: "CapsLock is on.",
+						ko: "CapsLock 이 켜져 있습니다.",
+						ja: "CapsLockがオンになっています。",
+						zh: "大写锁定已打开。"
+					},
+	confirm_continue: {
+						en: "Do you want to continue?",
+						ko: "계속 하시겠습니까?",
+						ja: "続行しますか？",
+						zh: "确认继续吗？"
+					},
+
+	m_title:		{	en:	"Site blocking guide",
+						ko: "사이트 차단 안내",
+						ja:	"サイトをブロック案内",
+						zh: "网站拦截说明"
+					},
+	m_subtitle1:	{	en:	"This site has been blocked by internal policies.",
+						ko: "해당 사이트는 사내 정책에 의해 차단되었습니다.",
+						ja:	"このサイトは、社内ポリシーによってブロックされました。",
+						zh: "该网站依据公司内部政策已被阻止。"
+					},
+	m_subtitle2:	{	en:	"Please contact your network administrator if you have any questions about this warning message.",
+						ko: "관련 문의 사항이 있는 경우 네트워크 관리자에게 문의해 주세요.",
+						ja:	"関連質問がある場合は、ネットワーク管理者にお問い合わせください。",
+						zh: "如果您有任何疑问，请联系网络管理员。"
+					},
+	m_request_btn:	{	en: "unblok request",
+						ko: "차단 해제 요청",
+						ja: "リクエストのブロックを解除",
+						zh: "取消阻止请求"
+					},
+	m_unblock_request:{	en: "Would you like to request unblocking?",
+						ko: "차단 해제를 요청하시겠습니까?",
+						ja: "ブロック解除をリクエストしますか？",
+						zh: "您想请求解除封锁吗？"
+					},
+	m_request_ok:	{	en: "You requested to unblock.",
+						ko: "차단 해제 요청하였습니다.",
+						ja: "ブロックを解除するようリクエストしました。",
+						zh: "您要求解除封锁。"
+					},
+	m_request_failed:{	en: "You failed to request unblock.",
+						ko: "차단 해제 요청에 실패했습니다.",
+						ja: "ブロック解除のリクエストに失敗しました。",
+						zh: "您未能请求取消阻止。"
+					},
+	m_login_failed:	{	en:	"Login failed.",
+						ko: "로그인에 실패했습니다.",
+						ja:	"ログインに失敗しました。",
+						zh: "登录失败。"
+					},
+	m_login_failed_ip:{	en:	"You do not have permission to access.",
+						ko: "접근 권한이 없습니다.",
+						ja:	"アクセス権限がありません。",
+						zh: "您无权访问。"
+					},
+	m_login_expelled:{	en:	"Login is unavailable for a while due to forced logout.",
+						ko: "강제 로그아웃으로 인해 로그인이 일정 시간 불가능합니다.",
+						ja:	"強制ログアウトによりログインが一定時間不可能です。",
+						zh: "由于强制退出，在一段时间内无法登录。"
+					},
+	m_login_lock:	{	en:	"Your account has been locked due to 5 failed login attempts.",
+						ko: "로그인 5회 실패로 인해 계정이 잠겼습니다.",
+						ja:	"ログイン5回失敗したため、アカウントがロックされています。",
+						zh: "您的帐户因五次登录尝试失败而被锁定。"
+					},
+	m_signed_ok:	{	en: "You are logged in.<br>Internet access is available from now on."+
+							"Please press <span class='red'>Refresh (F5)</span> to move the page.<br>"+
+							"Be sure to log out when you are finished using the internet.",
+						ko: "정상 로그인 되었습니다.<br>"+
+							"지금부터 인터넷 사용이 가능하며, 페이지 이동을 하려면 <span class='red'>새로고침(F5)</span>를 눌러주세요.<br>"+
+							"인터넷을 모두 사용하셨다면 반드시 로그아웃 하시기 바랍니다.",
+						ja:	"通常のログインされた。"+
+							"今からインターネット使用が可能であり、ページ移動をするには、<span class='red'>リフレッシュ(F5)</span>を押してください。"+
+							"インターネットの使用が終了したら、必ずログアウトしてください。",
+						zh:	"您已成功登录。<br>"+
+							"从现在开始，您可以使用网络，按<span class='red'>刷新(F5)</span>移动至新页面。<br>"+
+							"网络使用后务必退出账号。"
+					},
+	m_signed_popup:	{	en: "You are logged in.<br>Internet access is available from now on."+
+							"If you close the current window, the internet will be disabled.<br>"+
+							"Be sure to log out when you are finished using the internet.",
+						ko: "정상 로그인 되었습니다.<br>"+
+							"지금부터 인터넷 사용이 가능하며, 현재 창을 닫을 경우 인터넷 사용이 중지됩니다.<br>"+
+							"인터넷을 모두 사용하셨다면 반드시 로그아웃 하시기 바랍니다.",
+						ja:	"通常のログインされた。"+
+							"今からインターネット使用が可能であり、現在のウィンドウを閉じる場合は、インターネットの使用が停止されます。"+
+							"インターネットの使用が終了したら、必ずログアウトしてください。",
+						zh:	"您已成功登录。<br>"+
+							"从现在开始，网络可用。如果您关闭当前窗口网络使用将终止。"+
+							"网络使用后务必退出账号。"
+					},
+	m_logout_try:	{	en:	"Be sure to <span class='red'>log out</span> when you are finished using the internet.",
+						ko: "인터넷을 모두 사용하셨다면 반드시 <span class='red'>로그아웃</span> 하시기 바랍니다.",
+						ja:	"インターネットの使用が終了したら、必ず<span class='red'>ログアウト</span>してください。",
+						zh: "网络使用后务必退出账号。"
+					},
+
+	text:			function(key){
+						if( this[key] != undefined ){
+							var sValue = (this[key][lang] != undefined) ? this[key][lang] : this[key].en;
+							if(arguments[1]) sValue = sValue.replace(/\?/, arguments[1]);
+							return sValue;
+						}
+						else return '';
+					},
+
+	alert:			function(sKey, sReplace){
+						var obj = eval("this."+sKey);
+						var sMsg = obj[lang] != undefined ? obj[lang] : obj.en;
+						alert( (sReplace ? sMsg.replace(/\?/, sReplace) : sMsg) + (arguments[2] ? arguments[2] : '') );
+					}
+};

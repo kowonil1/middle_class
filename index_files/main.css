@@ -1,0 +1,822 @@
+@charset "utf-8";
+/*@import url(fonts.css);*/
+
+/* 초기화 */
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,fieldset{
+	margin: 0;
+	padding: 0;
+}
+fieldset, a img{
+	border: 0;
+}
+
+/* 기본 스타일 */
+html, body {
+	height: 100%;
+}
+body {text-align:center; font-family: 'NanumGothic', sans-serif;}
+body:lang(ko) {font-family:'NanumGothic', sans-serif;}
+body:lang(en) {font-family:Arial, Sans-serif, Gulim !important;}
+body:lang(ja) {font-family:Meiryo, "Meiryo UI", "MS PGothic", Osaka, Arial, Sans-serif !important;}
+body:lang(zh) {font-family:"Microsoft Yahei", Arial, San-serif !important;}
+div{
+	display:block;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+}
+
+.hid { display:none; }
+.op { opacity:0; }
+
+.btn {
+	display: inline-block;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	white-space: nowrap;
+	padding: 5px;
+	font-size: 12px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-family: Arial, 굴림, Gulim, Tahoma;
+}
+
+/*******************************
+ * Dialog CSS
+ *******************************/
+.dialog {display:none; z-index:99; font-size:12px;}
+.dialog table.table {margin-bottom:0;}
+.dialog table thead tr td {vertical-align:middle; border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
+.dialog table tbody tr td {vertical-align:middle; border-top:1px solid #ddd; border-bottom:none;}
+.dialog table tbody tr:first-child td {border-top:none;}
+.dialog span.sure {color:#6da2f2; /*8199b7, d07222, 317fcb*/ font-size:9px; margin-left:-12px; margin-right:3px;}
+.dialog table tbody tr td a {color:#337ab7;}
+.dialog table tbody tr td a span {margin-right:3px; color:#df7955;}
+.dialog table tbody tr td label {width:80px;}
+.dialog table tbody tr td label:hover {color:#317cec; font-weight:bold;}
+.dialog table:nth-child(n+2) {display:none;}
+
+.dialog input {font-size:12px;}
+.dialog input[type=text] {width:95%; height:22px; vertical-align:bottom; border:1px solid #999;}
+.dialog input[type=text].conf {width:85%;}
+.dialog input[type=text].wp95 {width:95%;}
+.dialog input[type=text].w30 {width:30px;}
+.dialog input[type=text].w40 {width:40px;}
+.dialog input[type=password] {width:95%; height:22px; border:1px solid #999;}
+.dialog input[type=file] {width:95%; height:22px; -moz-appearance:none;}
+.dialog input[type=checkbox] {vertical-align:middle; margin-top:-7px;}
+.dialog textarea {width:95.3%; height:58px; resize:none; border:1px solid #999;}
+.dialog textarea.full {width:100%;}
+.dialog textarea.low {height:46px;}
+.dialog textarea.lower {height:34px;}
+.dialog textarea.high {height:120px; resize:vertical;}
+.dialog select {border:1px solid #999; vertical-align:bottom;}
+.dialog select.wp95 {width:95%;}
+.dialog select.conf {width:85%; margin-top:3px;}
+.dialog hr {border-top-color:#d4d4d4; margin:1px 0;}
+.dialog .card-body {padding:5px 10px;}
+.cover {position:fixed;left:0;top:0;right:0;bottom:0;width:100%;min-height:100%;background-color:rgba(0,0,0,0.3);z-index:99;display:none;overflow-x:hidden;overflow-y:auto;}
+
+/*******************************
+ * jquery-ui CSS Customizing
+ *******************************/
+.ui-dialog .ui-dialog-buttonpane {font-family:sans-serif !important; margin-top:3px; padding:5px 5px 0 0;}
+.ui-dialog .ui-dialog-buttonpane button {font-size:13.2px;}
+.ui-button-text-only .ui-button-text {padding:5px 15px;}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {height:20px;}
+.ui-widget {font-family:sans-serif; ffont-size:1.1em;}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {font-family:inherit;}
+.ui-widget-content {background-color:#fcfdfd; border-color:#a0a0a0;}
+.ui-widget-header {color:#fff; border-color:#888888;}
+.ui-state-default {color:#333333; border-color:#a0a0a0 !important;}
+.ui-tooltip {max-width:600px !important;}
+
+.ui-dialog-title {text-align:left; font-size:13.2px;}
+.ui-dialog-titlebar {background-color:#2980b9;border:0;}
+.ui-widget-header {color:#ffffff;}
+.ui-button {font-weight:600;}
+.ui-button:first-child {background-color:#ddd;}
+.ui-button:hover, .ui-button:focus {font-weight:600;}
+.ui-button:active {background-color:#7d7d7d; border-color:#5b5b5b;}
+
+/*Templete 01  시작*/
+#temp01 {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: table;
+	background: url(../images/bg01.png);
+}
+#temp01 .contain{
+	display: table-cell;
+	vertical-align: middle;
+}
+#temp01 .content{
+	display:table;
+	width:850px;
+	height:600px;
+	border:solid 1px #ccc;
+	border-radius:15px;
+	margin:auto;
+	position:relative;
+	background:#FFF;
+	text-align:center;
+	padding:0 40px;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+}
+#temp01 .logobox{
+	position: absolute;
+	width:770px;
+	height:80px;
+	overflow: hidden;
+	display: block;
+	border-bottom: #99afcd solid 2px;
+	text-align:left;
+}
+#temp01 .logo{
+	max-width:770x;
+	max-height:60px;
+	margin:0 auto;
+	overflow: hidden;
+	position: absolute;
+	bottom:10px;
+}
+
+#temp01 .rightbox{
+	width:650px;
+	top:120px;
+	left:100px;
+	position:absolute;
+	text-align:center;
+}
+
+#temp01 .title{
+	font-size: 42px;
+	line-height:60x;
+	letter-spacing:-2px;
+	font-weight: 700;
+	color:#000c72;
+}
+#temp01 .stitle{
+	font-size: 18px;
+	line-height:30px;
+	max-height:90px;
+	overflow:hidden;
+	letter-spacing:-0.5px;
+	font-weight: 400;
+	color:#343434;
+	margin-top:35px;
+}
+#temp01 .data{
+	width:650px;
+	color:#FFF;
+	display: table;
+	border-radius:10px;
+	border:solid 1px #000572;
+	padding:30px;
+	margin:30px 0 0 0;
+	background: linear-gradient(to bottom, #000674 0%, #0048ac 20%, #0048ac 100%);
+	background-color:#0048ac; /* for ie9 add */
+}
+#temp01 .data dl {
+	height:25px;
+}
+#temp01 .data dt{
+	width:15%;
+	text-align:left;
+}
+#temp01 .data_title{
+	height:25px;
+	margin:3px 0;
+	font-weight: 700;
+	font-size:13px;
+	line-height:24px;
+	float:left;
+	display:block;
+	color:#ebff67;
+}
+
+#temp01 .data_info{
+	width:85%;
+	max-width:500px;
+	height:25px;
+	margin:3px 0;
+	padding-left:15px;
+	position:relative;
+	font-size:13px;
+	line-height:24px;
+	float:right;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+}
+#temp01 .sinfo{
+	font-size:13px;
+	line-height:18px;
+	max-height:80px;
+	overflow:hidden;
+	font-weight: 700;
+	text-align:center;
+	color:#7A7A7A;
+	padding-top:20px;
+}
+#temp01 .btnbox{
+	width: 650px;
+	left: 100px;
+	position: absolute;
+	bottom: 20px;
+	text-align: right;
+	padding-right: 15px;
+}
+#temp01 .btn {
+	background-color: #0048ac;
+	border-color: #657992;
+	color: #fff;
+}
+#temp01 .btn:hover, #temp01 .btn:focus {
+	background-color: #0048acba;
+	border-color: #435163;
+}
+
+/*Templete 01  끝*/
+
+/*Templete 02  시작*/
+#temp02 {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: table;
+}
+#temp02 .contain{
+	display: table-cell;
+	vertical-align: middle;
+}
+#temp02 .content{
+	display:table;
+	width:900px;
+	height:498px;
+	border:solid 1px #ccc;
+	border-radius:15px;
+	margin:auto;
+	position:relative;
+}
+#temp02 .logobox{
+	position: absolute;
+	width:285px;
+	height:80px;
+	overflow: hidden;
+	display: block;
+}
+#temp02 .logo{
+	position: absolute;
+	max-width:285x;
+	max-height:60px;
+	overflow: hidden;
+	bottom:10px;
+	left:15px;
+}
+#temp02 .img{
+	background: url(../images/bg02.png) no-repeat;
+	background-size: 100% 100%;
+	width:285px;
+	height:300px;
+	top:100px;
+	position:absolute;
+	float:left;
+}
+#temp02 .rightbox{
+	width:550px;
+	top:90px;
+	right:35px;
+	position:absolute;
+	float:left;
+	text-align:left;
+}
+
+#temp02 .title{
+	font-size: 36px;
+	line-height:40px;
+	letter-spacing:-2px;
+	font-weight: 800;
+	color:#d33138;
+}
+#temp02 .stitle{
+	font-size: 16px;
+	line-height:24px;
+	max-height:48px;
+	overflow:hidden;
+	letter-spacing:-0.5px;
+	font-weight: 600;
+	color:#5E5E5E;
+	margin-top:15px;
+}
+#temp02 .data{
+	width:550px;
+	height:95px;
+	display: table;
+	border:solid 5px #ccc;
+	padding:20px 20px 20px 40px;
+	margin:20px 0 0 0;
+}
+#temp02 .data dl {
+	height:25px;
+}
+#temp02 .data dt{
+	width:15%;
+}
+#temp02 .data_title{
+	height:25px;
+	margin:3px 0;
+	font-weight: 700;
+	color:#000;
+	font-size:12px;
+	line-height:24px;
+	float:left;
+}
+#temp02 .data_info{
+	width:85%;
+	max-width:480px;
+	height:25px;
+	margin:3px 0;
+	padding-left:15px;
+	color:#333;
+	background:#e4e4e4;
+	position:relative;
+	font-size:12px;
+	line-height:24px;
+	float:right;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+}
+#temp02 .sinfo{
+	font-size:12px;
+	line-height:16px;
+	max-height:80px;
+	overflow:hidden;
+	font-weight: 400;
+	color:#d33138;
+	padding-top:20px;
+}
+#temp02 .btnbox{
+	width: 550px;
+	right: 44px;
+	bottom: 10px;
+	position: absolute;
+	text-align:right;
+}
+#temp02 .btn {
+	background-color: #D04D55;
+	border-color: #D3D3D3;
+	color: #fff;
+}
+#temp02 .btn:hover, #temp02 .btn:focus {
+	background-color: #d4898e;
+	border-color: #b1b0b0;
+}
+
+/*Templete 02  끝*/
+
+
+/*Templete 03  시작*/
+#temp03 {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: table;
+}
+#temp03 .contain{
+	display: table-cell;
+	vertical-align: middle;
+}
+#temp03 .content{
+	display:table;
+	width:900px;
+	height:500px;
+	border:solid 1px #ccc;
+	margin:auto;
+	position:relative;
+}
+#temp03 .logobox{
+	position: absolute;
+	width:550px;
+	height:100px;
+	left:320px;
+	overflow: hidden;
+	display: block;
+}
+#temp03 .logo{
+	position: absolute;
+	max-width:500x;
+	max-height:60px;
+	overflow: hidden;
+	bottom:20px;
+	right:0;
+}
+#temp03 .img{
+	background: url(../images/bg03.png) no-repeat;
+	background-size: 100% 100%;
+	width:280px;
+	height:500px;
+	position:absolute;
+	float:left;
+}
+#temp03 .rightbox{
+	width:550px;
+	top:110px;
+	right:35px;
+	position:absolute;
+	float:left;
+	text-align:left;
+}
+
+#temp03 .title{
+	font-size: 36px;
+	line-height:40px;
+	letter-spacing:-2px;
+	font-weight: 800;
+	color:#d33138;
+}
+#temp03 .stitle{
+	font-size: 16px;
+	line-height:24px;
+	max-height:48px;
+	overflow:hidden;
+	letter-spacing:-0.5px;
+	font-weight: 400;
+	color:#232323;
+	margin-top:15px;
+}
+#temp03 .data{
+	width:550px;
+	height:95px;
+	display: table;
+	border:solid 5px #c1cde5;
+	padding:20px 20px 20px 40px;
+	margin:20px 0 0 0;
+}
+#temp03 .data dl {
+	height:25px;
+}
+#temp03 .data dt{
+	width:15%;
+}
+#temp03 .data_title{
+	height:25px;
+	margin:3px 0;
+	font-weight: 700;
+	color:#000;
+	font-size:12px;
+	line-height:24px;
+	float:left;
+}
+#temp03 .data_info{
+	width:85%;
+	max-width:480px;
+	height:25px;
+	margin:3px 0;
+	padding-left:15px;
+	color:#333;
+	background:#e0e5ef;
+	position:relative;
+	font-size:12px;
+	line-height:24px;
+	float:right;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+}
+#temp03 .sinfo{
+	font-size:12px;
+	line-height:16px;
+	max-height:80px;
+	overflow:hidden;
+	font-weight: 400;
+	color:#35499b;
+	padding-top:20px;
+}
+#temp03 .btnbox{
+	width: 550px;
+	right: 44px;
+	bottom: 15px;
+	position: absolute;
+	text-align:right;
+}
+#temp03 .btn {
+	background-color: #e0e5ef;
+	border-color: #c1cde5;
+	color: #35499b;
+}
+#temp03 .btn:hover, #temp03 .btn:focus {
+	background-color: #acbcda;
+	border-color: #c1cde5;
+	color: #fff;
+}
+
+/*Templete 03  끝*/
+
+
+/*Templete 04  시작*/
+#temp04 {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: table;
+}
+#temp04 .contain{
+	display: table-cell;
+	vertical-align: middle;
+}
+#temp04 .content{
+	display:table;
+	width:900px;
+	height:500px;
+	border:solid 1px #ccc;
+	margin:auto;
+	position:relative;
+}
+#temp04 .logobox{
+	position: absolute;
+	width:900px;
+	height:120px;
+	overflow: hidden;
+	display: block;
+}
+#temp04 .logo{
+	position: absolute;
+	max-width:500x;
+	max-height:60px;
+	overflow: hidden;
+	bottom:30px;
+	right:40px;
+}
+#temp04 .img{
+	background: url(../images/bg04.png) no-repeat;
+	background-size:100% 100%;
+	width:260px;
+	height:300px;
+	position:absolute;
+	top:120px;
+	left:20px;
+	text-align:center;
+}
+#temp04 .rightbox{
+	width:550px;
+	top:120px;
+	right:35px;
+	position:absolute;
+	float:left;
+	text-align:left;
+}
+
+#temp04 .title{
+	font-size: 32px;
+	line-height:40px;
+	letter-spacing:-2px;
+	font-weight: 800;
+	color:#262626;
+}
+#temp04 .stitle{
+	font-size: 15px;
+	line-height:24px;
+	max-height:48px;
+	overflow:hidden;
+	letter-spacing:-0.5px;
+	font-weight: 400;
+	color:#333;
+	margin-top:15px;
+}
+#temp04 .data{
+	width:550px;
+	height:95px;
+	display: table;
+	border:solid 3px #ff7f00;
+	padding:20px 20px 20px 40px;
+	margin:20px 0 0 0;
+}
+#temp04 .data dl {
+	height:25px;
+}
+#temp04 .data dt{
+	width:15%;
+}
+#temp04 .data_title{
+	height:25px;
+	margin:3px 0;
+	font-weight: 700;
+	color:#ff7f00;
+	font-size:12px;
+	line-height:24px;
+	float:left;
+}
+#temp04 .data_info{
+	width:85%;
+	max-width:484px;
+	height:25px;
+	margin:3px 0;
+	padding-left:15px;
+	color:#333;
+	background:#f2f2f2;
+	position:relative;
+	font-size:12px;
+	line-height:24px;
+	float:right;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+}
+#temp04 .sinfo{
+	font-size:12px;
+	line-height:16px;
+	max-height:80px;
+	overflow:hidden;
+	font-weight: 400;
+	color:#ff7f00;
+	padding-top:20px;
+}
+#temp04 .btnbox{
+	width: 550px;
+	right: 44px;
+	position: absolute;
+	text-align: right;
+	bottom: 12px;
+}
+#temp04 .btn {
+	background-color: #ff7f00;
+	border-color: #b7600a;
+	color: #fff;
+}
+#temp04 .btn:hover, #temp04 .btn:focus {
+	background-color: #f5a75b;
+	border-color: #b37a42;
+}
+
+/*Templete 04  끝*/
+
+
+/*Templete 05  시작*/
+#temp05 {
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	display: table;
+	background: url(../images/bg05.png);
+	background-size:cover;
+}
+#temp05 .contain{
+	display: table-cell;
+	vertical-align: middle;
+	background:rgba(0, 0, 0, 0.1);
+}
+#temp05 .content{
+	display:table;
+	width:100%;
+	border-top:solid 1px #FFF;
+	border-bottom:solid 1px #FFF;
+	position:relative;
+	background:rgba(0, 0, 0, 0.4);
+	text-align:center;
+}
+#temp05 .content_inner{
+	position: relative;
+	display:table;
+	width:700px;
+	height:490px;
+	text-align:center;
+	margin:0 auto;
+	padding:20px 0;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+}
+#temp05 .logobox{
+	position: absolute;
+	width:100%;
+	height:80px;
+	overflow: hidden;
+	display: block;
+	text-align:left;
+	top:-80px;
+}
+#temp05 .logo{
+	max-width:700x;
+	max-height:60px;
+	margin:0 auto;
+	overflow: hidden;
+	position: absolute;
+	bottom:10px;
+}
+#temp05 .rightbox{
+	width:100%;
+	top:40px;
+	position:absolute;
+	text-align:center;
+}
+#temp05 .title{
+	font-size: 44px;
+	line-height:60x;
+	letter-spacing:-2px;
+	font-weight: 600;
+	color:#FFF;
+}
+#temp05 .stitle{
+	font-size: 18px;
+	line-height:30px;
+	max-height:60px;
+	overflow:hidden;
+	font-weight: 600;
+	color:#FFF;
+	margin-top:35px;
+}
+#temp05 .data{
+	width:100%;
+	color:#FFF;
+	display: table;
+	border:solid 1px #FFF;
+	padding:20px;
+	margin:30px 0 0 0;
+	background:rgba(53, 53, 53, 0.7);
+}
+#temp05 .data dl {
+	height:25px;
+}
+#temp05 .data dt{
+	width:15%;
+	text-align:left;
+}
+#temp05 .data_title{
+	height:25px;
+	margin:3px 0;
+	font-weight: 700;
+	font-size:13px;
+	line-height:24px;
+	float:left;
+	display:block;
+	color:#ebff67;
+}
+
+#temp05 .data_info{
+	width:85%;
+	max-width:560px;
+	height:25px;
+	margin:3px 0;
+	padding-left:15px;
+	position:relative;
+	font-size:13px;
+	line-height:24px;
+	float:right;
+	text-align:left;
+	box-sizing:border-box;
+	-webkit-box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	text-overflow:ellipsis; white-space:nowrap; overflow:hidden;
+}
+#temp05 .sinfo{
+	font-size:13px;
+	line-height:18px;
+	max-height:80px;
+	overflow:hidden;
+	font-weight: 400;
+	text-align:center;
+	color:#ebff67;
+	padding:20px;
+}
+#temp05 .btnbox{
+	bottom: 15px;
+	width: 100%;
+	position: absolute;
+	text-align: right;
+	padding-right: 9px;
+}
+#temp05 .btn {
+	background-color: #4a4947;
+	border-color: #ffffff;
+	color: #fff;
+}
+#temp05 .btn:hover, #temp05 .btn:focus {
+	background-color: #6b6a68;
+	border-color: #ffffff;
+}
+
+/*Templete 05  끝*/
